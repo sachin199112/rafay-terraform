@@ -1,3 +1,25 @@
+
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "4.17.1"
+    }
+
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.0.1"
+    }
+  }
+  backend "remote" {
+    organization = "sachin1991"
+
+    workspaces {
+      name = "sachin-eks"
+    }
+  }
+}
+
 # Retrieve EKS cluster information
 provider "aws" {
   region = var.region
@@ -24,11 +46,4 @@ provider "kubernetes" {
   }
 }
 
-terraform {
-  backend "s3" {
-    bucket         = "sachin-terraform"
-    key            = "terraform/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "terraform-sachin"
-  }
-}
+
