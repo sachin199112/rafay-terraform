@@ -16,9 +16,12 @@ provider "kubernetes" {
   config_path = ".kube/config" 
 }
 
-#terraform {
-#  backend "local" {}
-#}
+terraform {
+  backend "s3" {
+    bucket         = "sachin-terraform"
+    key            = "terraform1/terraform.tfstate"
+    region         = "us-east-1"
+}
 
 #provider "kubernetes" {
 ##  host                   = "https://D461113D2580832A0398C9EEEE0E3948.gr7.us-east-1.eks.amazonaws.com"
