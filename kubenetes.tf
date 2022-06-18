@@ -21,6 +21,7 @@ terraform {
     bucket         = "sachin-terraform"
     key            = "terraform1/terraform.tfstate"
     region         = "us-east-1"
+  }
 }
 
 #provider "kubernetes" {
