@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket         = "sachin-terraform"
+    key            = "terraform1/terraform.tfstate"
+    region         = "us-east-1"
+  }
+}
+
 resource "kubernetes_deployment" "nginx" {
   metadata {
     name = "scalable-nginx-example"
